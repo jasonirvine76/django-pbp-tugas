@@ -1,65 +1,27 @@
-# Template Proyek Django PBP
 
-Pemrograman Berbasis Platform (CSGE602022) - diselenggarakan oleh Fakultas Ilmu Komputer Universitas Indonesia, Semester Ganjil 2022/2023
 
-*Read this in other languages: [Indonesian](README.md), [English](README.en.md)*
-
-## Pendahuluan
-
-Repositori ini merupakan sebuah template yang dirancang untuk membantu mahasiswa yang sedang mengambil mata kuliah Pemrograman Berbasis Platform (CSGE602022) mengetahui struktur sebuah proyek aplikasi Django serta file dan konfigurasi yang penting dalam berjalannya aplikasi. Kamu dapat dengan bebas menyalin isi dari repositori ini atau memanfaatkan repositori ini sebagai pembelajaran sekaligus awalan dalam membuat sebuah proyek Django.
-
-## Cara Menggunakan
-
-Apabila kamu ingin menggunakan repositori ini sebagai repositori awalan yang nantinya akan kamu modifikasi:
-
-1. Buka laman GitHub repositori templat kode, lalu klik tombol "**Use this template**"
-   untuk membuat salinan repositori ke dalam akun GitHub milikmu.
-2. Buka laman GitHub repositori yang dibuat dari templat, lalu gunakan perintah
-   `git clone` untuk menyalin repositorinya ke suatu lokasi di dalam sistem
-   berkas (_filesystem_) komputermu:
-
-   ```shell
-   git clone <URL ke repositori di GitHub> <path ke suatu lokasi di filesystem>
-   ```
-3. Masuk ke dalam repositori yang sudah di-_clone_ dan jalankan perintah berikut
-   untuk menyalakan _virtual environment_:
-
-   ```shell
-   python -m venv env
-   ```
-4. Nyalakan environment dengan perintah berikut:
-
-   ```shell
-   # Windows
-   .\env\Scripts\activate
-   # Linux/Unix, e.g. Ubuntu, MacOS
-   source env/bin/activate
-   ```
-5. Install dependencies yang dibutuhkan untuk menjalankan aplikasi dengan perintah berikut:
-
-   ```shell
-   pip install -r requirements.txt
-   ```
-
-6. Jalankan aplikasi Django menggunakan server pengembangan yang berjalan secara
-   lokal:
-
-   ```shell
-   python manage.py runserver
-   ```
-7. Bukalah `http://localhost:8000` pada browser favoritmu untuk melihat apakah aplikasi sudah berjalan dengan benar.
-
-## Contoh Deployment 
-
-Pada template ini, deployment dilakukan dengan memanfaatkan GitHub Actions sebagai _runner_ dan Heroku sebagai platform Hosting aplikasi. 
-
-Untuk melakukan deployment, kamu dapat melihat instruksi yang ada pada [Tutorial 0](https://pbp-fasilkom-ui.github.io/ganjil-2023/assignments/tutorial/tutorial-0).
-
-Untuk contoh aplikasi Django yang sudah di deploy, dapat kamu akses di [https://django-pbp-template.herokuapp.com/](https://django-pbp-template.herokuapp.com/)
-
-## Link Heroku
+## Tugas 2
 
 Silahkan mengunjungi: https://initugaspbp.herokuapp.com/
+
+![alt text](https://github.com/jasonirvine76/django-pbp-tugas/blob/main/images/workflows.png)
+1. Client meminta request, lalu request akan dikirimkan ke urls.py. urls.py akan memilih view yang sesuai dengan request yang diminta client, setelah request diproses, views.py menentukan apakah terjadi pertukaran data, jika iya views.py akan melakukan transaksi data dengan models.py, jika tidak views.py langsung akan memilih HTML yang sesuai. Jika terjadi pertukaran data maka views.py akan menunggu data dari models.py, setelah data diterima views.py memilih HTML yang sesuai lalu data ditampilkan pada HTML. HTML yang terpilih akan mengirim response sehingga dapat terbentuk di sisi client tampilan beserta data yang diinginkan client.
+
+2. Virtual Environment ini digunakan untuk memisahkan environment atau package luar antar project. Dalam suatu komputer, pastinya kita memiliki beberapa project django. Untuk menghindari konflik, maka diperlukan virtual environment untuk memisahkan package yang diinstal masing-masing project. Virtual environment ini membuat kita tidak menginstall external libraries secara global melainkan secara lokal. Coba bayangkan ketika kalian memiliki 2 project django, project 1 dibuat dengan django versi 2.2.26 dan project 2 dibuat dengan django versi 4.0. Jika kita menginstallnya di global, maka project 1 bisa saja mengalami error karena beberapa syntax tidak berlaku lagi di django versi 4.0 (deprecated). Maka dari itu kita perlu virtual environment sehingga setiap project dapat berjalan dengan django versi masing-masingnya agar tidak ada error saat dijalankan.
+
+3. Penjelasan langkah-langkah :
+    + Mengimport model CatalogItem dari models.py di views.py. Pada views.py kita buat fungsi yang isinya dictionary. Dictionary ini kita isi dengan value nama, NPM, 
+      data dari CatalogItem dengan menggunakan CatalogItem.objects.all(). Setelah itu jangan lupa untuk me-return request, dictionary tersebut, dan memilih file HTML
+      mana yang ingin ditampilkan ketika fungsi tersebut dipanggil.
+    + Menambah urlpatterns pada urls.py di app katalog yang isinya path yang diinginkan untuk menampilkan fungsi yang telah kita buat di views.py. Setelah itu, pada
+      project_django, pada urls.py-nya kita tambahkan juga route/path yang diinginkan untuk memasukkan urls.py pada app katalog agar bisa ditampilkan pada web saya.
+    + Setelah saya buat views-nya, saya membuat file HTML yang saya ingin tampilkan. File HTML ini akan menampilkan data yang berada di dictionary yang di return oleh       fungsi pada views.py. Dengan bantuan django template languange dan HTML, kita dapat menampilkan datanya berupa tabel. Cara menampilkannya kita iterasi data yang
+      dikirim karena data yang dikirim tidak satuan sehingga kita harus iterasi terlebih dahulu untuk menampilkannya satu persatu.
+    + Cara deploynya, saya membuat app pada akun heroku saya. Setelah itu pada repository github web ini di bagian settings, saya tambahkan secret key, yaitu
+      HEROKU_API_KEY dan HEROKU_APP_NAME. Terakhir saya melakukan push sehingga perubahan yang saya lakukan tersimpan di repository saya, setelah selesai di push
+      otomatis .github/workflows akan melakukan deployment di heroku
+
+
 
 ## Credits
 
