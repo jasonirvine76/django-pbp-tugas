@@ -1,0 +1,112 @@
+[
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 1,
+        "fields": {
+            "watched": true,
+            "title": "Mobile Suit Gundam Unicorn RE:0096",
+            "rating": "5",
+            "release_date": "2022-09-13",
+            "review": "Good animation and plot"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 2,
+        "fields": {
+            "watched": false,
+            "title": "Tukang Haji Naik Bubur",
+            "rating": null,
+            "release_date": "2012-12-12",
+            "review": "-"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 3,
+        "fields": {
+            "watched": true,
+            "title": "Gundam 00",
+            "rating": "5",
+            "release_date": "2010-03-12",
+            "review": "Cool mecha fight and good story plot"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 4,
+        "fields": {
+            "watched": true,
+            "title": "Azab",
+            "rating": "3",
+            "release_date": "2019-09-09",
+            "review": "Menyeramkan :)"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 5,
+        "fields": {
+            "watched": true,
+            "title": "KKN di Desa Penari",
+            "rating": "4",
+            "release_date": "2022-04-30",
+            "review": "Seru tapi kurang serem"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 6,
+        "fields": {
+            "watched": false,
+            "title": "Kuntilanak 3",
+            "rating": null,
+            "release_date": "2008-02-28",
+            "review": "-"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 7,
+        "fields": {
+            "watched": true,
+            "title": "Kimetsu no Yaiba",
+            "rating": "5",
+            "release_date": "2021-01-06",
+            "review": "Enjoy untuk ditonton :D"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 8,
+        "fields": {
+            "watched": true,
+            "title": "Kimi no Nawa",
+            "rating": "5",
+            "release_date": "2016-12-07",
+            "review": "Membuatku sedih :("
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 9,
+        "fields": {
+            "watched": false,
+            "title": "Star Wars",
+            "rating": null,
+            "release_date": "1997-06-17",
+            "review": "-"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 10,
+        "fields": {
+            "watched": true,
+            "title": "Aldnoah Zero",
+            "rating": "4",
+            "release_date": "2014-07-05",
+            "review": "Season 2 kinda sucks"
+        }
+    }
+]
