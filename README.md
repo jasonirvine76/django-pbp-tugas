@@ -42,6 +42,10 @@ Silahkan mengunjungi: https://initugaspbp.herokuapp.com/
   * release_date : DateField
   * review : TextField
 * Setelah itu, saya membuat fungsi pada views.py yang mengembalikan HTML, JSON, dan XML. Kemudian, saya mendaftarkan fungsi pada views ke urls.py pada folder mywatchlist dan juga menambahkan urls.py dari mywatchlist ke urls.py project-django. Lalu git add, commit, dan push ke repository sehingga dapat terdeploy di heroku.
+* Postman :
+
+**HTML**
+![Postman_HTML](https://postimg.cc/nXsw33mD)
 ## Credits
 
 Template ini dibuat berdasarkan [PBP Ganjil 2021](https://gitlab.com/PBP-2021/pbp-lab) yang ditulis oleh Tim Pengajar Pemrograman Berbasis Platform 2021 ([@prakashdivyy](https://gitlab.com/prakashdivyy)) dan [django-template-heroku](https://github.com/laymonage/django-template-heroku) yang ditulis oleh [@laymonage, et al.](https://github.com/laymonage). Template ini dirancang sedemikian rupa sehingga mahasiswa dapat menjadikan template ini sebagai awalan serta acuan dalam mengerjakan tugas maupun dalam berkarya.
