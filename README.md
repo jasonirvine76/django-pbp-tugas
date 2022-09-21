@@ -46,6 +46,12 @@ Silahkan mengunjungi: https://initugaspbp.herokuapp.com/
 
 **HTML**
 [![Postman-HTML.png](https://i.postimg.cc/QdSGxPx0/Postman-HTML.png)](https://postimg.cc/nXsw33mD)
+
+**JSON**
+[![Postman-JSON.png](https://i.postimg.cc/28RV4qdg/Postman-JSON.png)](https://postimg.cc/PNyXH5RM)
+
+**XML**
+[![Postman-XML.png](https://i.postimg.cc/Bvkq4yMR/Postman-XML.png)](https://postimg.cc/Jy3wQTwQ)
 ## Credits
 
 Template ini dibuat berdasarkan [PBP Ganjil 2021](https://gitlab.com/PBP-2021/pbp-lab) yang ditulis oleh Tim Pengajar Pemrograman Berbasis Platform 2021 ([@prakashdivyy](https://gitlab.com/prakashdivyy)) dan [django-template-heroku](https://github.com/laymonage/django-template-heroku) yang ditulis oleh [@laymonage, et al.](https://github.com/laymonage). Template ini dirancang sedemikian rupa sehingga mahasiswa dapat menjadikan template ini sebagai awalan serta acuan dalam mengerjakan tugas maupun dalam berkarya.
