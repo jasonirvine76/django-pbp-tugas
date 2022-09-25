@@ -33,7 +33,7 @@ def register(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Akun telah berhasil dibuat!')
-            return redirect('todolist:login')
+            return redirect('todolist:login_user')
 
     context = {'form':form}
     return render(request, 'register.html', context)
