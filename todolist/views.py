@@ -16,14 +16,17 @@ from todolist.models import Task
 # Create your views here.
 @login_required(login_url='/todolist/login/')
 def todolist(request):
-    task_item = Task.objects.filter(user = request.COOKIES['user'])
-    
-    context = {
-        'data':task_item,
-        'last_login':request.COOKIES['last_login'],
-        'user':request.COOKIES['username'],
-    }
-    return render(request, 'todolist.html', context)
+    try:
+        task_item = Task.objects.filter(user = request.COOKIES['user'])
+        
+        context = {
+            'data':task_item,
+            'last_login':request.COOKIES['last_login'],
+            'user':request.COOKIES['username'],
+        }
+        return render(request, 'todolist.html', context)
+    except:
+        return HttpResponseRedirect(reverse('todolist:logout'))
 
 def register(request):
     form = UserCreationForm()
