@@ -20,6 +20,7 @@ Silahkan mengunjungi: https://initugaspbp.herokuapp.com/todolist
     7. Membuat fungsi todolist(request) yang mengembalikan render dengan semua object task
     8. Membuat fungsi yang menghandle tombol selesai, belum selesai, dan hapus
     9. Tambahkan path/routing dalam bagian urlpatterns di urls.py pada folder todolist dengan views yang menghandle fitur-fitur pada html
+* Untuk penilaian bonus, kita memanggil id dari task yang ingin kita ubah. ID didapat dari url untuk fungsi selesai, belum selesai, dan delete. Setelah kita mendapatkan object tasknya kita dapat mengubahnya dengan ```task.is_finished = True/False lalu di task.save() dan untuk yang delete dengan task.delete()```
 
 
 
