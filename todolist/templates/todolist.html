@@ -12,44 +12,57 @@
 
   <h3>Selamat datang {{user}}</h3>
 
-  <table>
-    <tr>
-      <th>Date</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Status Penyelesaian</th>
-    </tr>
-    {% comment %} Add the data below this line {% endcomment %}
-    {% for item in data %}
-    <tr>
-      <th>{{item.date}}</th>
-      <th>{{item.title}}</th>
-      <th>{{item.description}}</th>
-      <th>{{item.is_finished}}</th>
-      <th>
-        <form method="POST">
+  <div class="mx-auto">
+    <br>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Date</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Status Penyelesaian</th>
+          <th>Selesai</th>
+          <th>Belum Selesai</th>
+          <th>Hapus</th>
+        </tr>
+        {% comment %} Add the data below this line {% endcomment %}
+        {% for item in data %}
+        <tr>
+          <th>{{item.date}}</th>
+          <th>{{item.title}}</th>
+          <th>{{item.description}}</th>
+          <th>{{item.is_finished}}</th>
+          <th>
+            <form method="POST">
+                {% csrf_token %}
+                <a class="btn btn-primary" href="{% url 'todolist:finished' item.id %}" role="button">Selesai</a>
+            </form>
+          </th>
+          <th>
+            <form method="POST">
             {% csrf_token %}
-            <button><a href="{% url 'todolist:finished' item.id %}"">Selesai</a></button>
-        </form>
-    </th>
-      <th>
-        <form method="POST">
-        {% csrf_token %}
-        <button><a href="{% url 'todolist:not-finished' item.id %}"">Belum Selesai</a></button>
-        </form>
-      </th>
-      <th>
-        <form method="POST">
-            {% csrf_token %}
-            <button><a href="{% url 'todolist:delete' item.id %}"">Hapus</a></button>
-        </form>
-      </th>
-    </tr>
-    {% endfor %}
-  </table>
+            <a class="btn btn-primary" href="{% url 'todolist:not-finished' item.id %}" role="button">Belum Selesai</a>
+            </form>
+          </th>
+          <th>
+            <form method="POST">
+                {% csrf_token %}
+                <a class="btn btn-danger" href="{% url 'todolist:delete' item.id %}" role="button">Hapus</a>
+            </form>
+          </th>
+        </tr>
+        {% endfor %}
+      </thead>
+    </table>
+  </div>
   <br>
   <br>
-  <button><a href="{% url 'todolist:create-task' %}">Tambah Task</a></button>
   <h5>Sesi terakhir login: {{ last_login }}</h5>
-  <button><a href="{% url 'todolist:logout' %}">Logout</a></button>
+  <p class="text-center">
+    <a class="btn btn-primary" href="{% url 'todolist:create-task' %}" role="button">Tambah Task</a>
+  </p>
+    
+  <p class="text-center">
+    <a class="btn btn-danger" href="{% url 'todolist:logout' %}" role="button">Logout</a>
+  </p>
 {% endblock content %}
