@@ -32,11 +32,13 @@ Silahkan mengunjungi: https://initugaspbp.herokuapp.com/todolist
   kelemahan:
     * Inline CSS harus diterapkan pada setiap elemen
 * Internal CSS adalah kode CSS yang ditulis pada ```tag<style>``` dan kode HTML yang ditulis di bagian header file HTML
+    ```
     <style>
         .card:hover {
         box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.589);
         }
     </style>
+    ```
   kelebihan:
     * Perubahan hanya terjadi pada 1 halaman
     * Class dan ID bisa digunakan oleh internal stylesheet
@@ -46,6 +48,7 @@ Silahkan mengunjungi: https://initugaspbp.herokuapp.com/todolist
     * Perubahan hanya terjadi pada 1 halaman, tidak efisien jika ingin menggunakan CSS pada beberapa halaman.
 * External CSS adalah kode CSS yang ditulis terpisah dari kode HTML. External CSS ditulis di sebuah file khusus menggunakan ekstensi .css
   contoh style.css yang berisi:
+    ```
     .xleftcol {
     float: left;
     width: 33%;
@@ -56,6 +59,7 @@ Silahkan mengunjungi: https://initugaspbp.herokuapp.com/todolist
     width: 34%;
     background:#eff2df;
     }
+    ```
   kelebihannya:
     * Ukuran file HTML menjadi lebih kecil dan lebih rapi
     * Kecepatan loading menjadi lebih cepat
