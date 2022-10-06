@@ -76,10 +76,73 @@ Silahkan mengunjungi: https://initugaspbp.herokuapp.com/todolist
     *```<li>...</li>```
 * Selector:
     * Selektor Tag adalah Selektor Tag disebut juga Type Selector. Selektor ini akan memilih elemen berdasarkan nama tag
+        ```
         p {
             color: blue;
         }
-
+        ```
+    * Selektor class adalah selektor yang memilih elemen berdasarkan nama class yang diberikan. Selektor class dibuat dengan tanda titik di depannya.
+        ```
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.589);
+        }
+        ```
+        ```
+        <div class="card" style="width: 18rem;">
+          <h5 class="card-header">{{item.title}}</h5>
+          <div class="card-body">
+            <h5 class="card-title">{{item.description}}</h5>
+            <p class="card-text">{{item.date}}</p>
+            <p class="card-text">Status Penyelesaian: {{item.is_finished}}</p>
+            <a href="{% url 'todolist:finished' item.id %}" class="btn btn-primary">Selesai</a>
+            <a href="{% url 'todolist:not-finished' item.id %}" class="btn btn-primary">Belum Selesai</a>
+            <a href="{% url 'todolist:delete' item.id %}" class="btn btn-danger">Hapus</a>
+          </div>
+        </div>
+        ```
+    * Selektor ID hampir sama dengan class. Bedanya, ID bersifat unik. Hanya boleh digunakan oleh satu elemen saja. Selektor ID ditandai dengan tanda pagar (#) di depannya.
+        ```
+        #header {
+            background: teal;
+            color: white;
+            height: 100px;
+            padding: 50px;
+        }
+        ``` 
+        dengan kode HTML
+        ```
+        <header id="header">
+            <h1>Selamat Datang di Website Saya</h1>
+        </header>
+        ```
+    * Selektor atribut adalah selektor yang memilik elemen berdasarkan atribut. Selektor ini hampir sama seperti selektor Tag.
+        ```
+        input[type=text] {
+            background: none;
+            color: cyan;
+            padding: 10px;
+            border: 1px solid cyan;
+        }
+        ```
+        artinya kita akan memilih semua elemen ```<input>``` yang memiliki ```type="text"```
+    * Selektor universal adalah selektor yang digunakan untuk menyeleksi semua elemen pada jangkaua (scope) tertentu.
+        ```
+        * {
+            border: 1px solid grey;
+        }
+        ```
+        artinya semua elemen akan memiliki border dengan ukuran 1px dengan warna abu-abu
+    * Pseudo selektor adalah selektor untuk memilih elemen semu seperti state pada elemen, elemen before dan after, elemen ganjil, dan sebagainya.
+        contoh selektor pseudo-element:
+            * ::before untuk memilh elemen semu sebelum elemen;
+            * ::after untuk memilh elemen semu setelah elemen;
+            * ::marker untuk memilh marker pada list;
+            * ::placeholder untuk memilih teks placeholder pada elemen input teks;
+* Cara saya mengimplementasikan checklist saya menambahkan bootstrap terlebih dahulu di base.html dengan
+    ``` <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">```
+  Saya menambahkan css pada halaman login, register, dan create-task sesuai dengan yang saya inginkan. Saya mencari template di google yang sudah responsive 
+  Saya menambahkan kode CSS pada halaman todolist dengan membuat navbar yang berisi tugas, tombol create task, dan tombol logout
+  Lalu, saya menambahkan kode CSS pada halaman todolist dengan membuat card yang diisi dengan object todolist
     
 
 
