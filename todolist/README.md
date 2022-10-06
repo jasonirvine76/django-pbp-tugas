@@ -22,6 +22,64 @@ Silahkan mengunjungi: https://initugaspbp.herokuapp.com/todolist
     9. Tambahkan path/routing dalam bagian urlpatterns di urls.py pada folder todolist dengan views yang menghandle fitur-fitur pada html
 * Untuk penilaian bonus, kita memanggil id dari task yang ingin kita ubah. ID didapat dari url untuk fungsi selesai, belum selesai, dan delete. Setelah kita mendapatkan object tasknya kita dapat mengubahnya dengan ```task.is_finished = True/False lalu di task.save() dan untuk yang delete dengan task.delete()```
 
+## Tugas 5
+* Inline CSS adalah kode CSS yang ditulis langsung pada atribut elemen html
+    ```<div style = "padding: 10px;"><a class="navbar-brand" href="#">Tugas 4 PBP</a></div>```
+  kelebihan:
+    * Permintaan HTTP yang lebih kecil
+    * Berguna untuk perbaikan cepat
+    * Berguna jika untuk menguji dan melihat perubahan
+  kelemahan:
+    * Inline CSS harus diterapkan pada setiap elemen
+* Internal CSS adalah kode CSS yang ditulis pada ```tag<style>``` dan kode HTML yang ditulis di bagian header file HTML
+    <style>
+        .card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.589);
+        }
+    </style>
+  kelebihan:
+    * Perubahan hanya terjadi pada 1 halaman
+    * Class dan ID bisa digunakan oleh internal stylesheet
+    * Tidak perlu mengupload beberapa file karena html dan css bisa digunakan dalam satu file
+  kelemehan:
+    * Meningkatkan waktu akses website
+    * Perubahan hanya terjadi pada 1 halaman, tidak efisien jika ingin menggunakan CSS pada beberapa halaman.
+* External CSS adalah kode CSS yang ditulis terpisah dari kode HTML. External CSS ditulis di sebuah file khusus menggunakan ekstensi .css
+  contoh style.css yang berisi:
+    .xleftcol {
+    float: left;
+    width: 33%;
+    background:#809900;
+    }
+    .xmiddlecol {
+    float: left;
+    width: 34%;
+    background:#eff2df;
+    }
+  kelebihannya:
+    * Ukuran file HTML menjadi lebih kecil dan lebih rapi
+    * Kecepatan loading menjadi lebih cepat
+    * File CSS yang sama dapat digunakan di banyak halaman
+  kekurangannya:
+    * Halaman belum tampil secara sempurna hingga file CSS selesai dipanggil
+* Tag : 
+    *```<html>...</html>```
+    *```<title>...</title>```
+    *```<body>...</body>```
+    *```<p>...</p>```
+    *```<h1>...</h1>```
+    *```<a>...</a>```
+    *```<li>...</li>```
+* Selector:
+    * Selektor Tag adalah Selektor Tag disebut juga Type Selector. Selektor ini akan memilih elemen berdasarkan nama tag
+        p {
+            color: blue;
+        }
+
+    
+
+
+
 
 
 

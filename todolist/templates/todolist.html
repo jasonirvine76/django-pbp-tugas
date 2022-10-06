@@ -1,68 +1,93 @@
 {% extends 'base.html' %}
 
- {% block content %}
+{% block content %}
+<style>
+  .card {
+    margin: auto;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
 
-  <h1>Tugas 4 Assignment PBP/PBD</h1>
+  }
+  .card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.589);
+  }
+  
+  html {
+  font-size: 1rem;
+}
 
-  <h5>Name: </h5>
-  <p>Jason Irvine Mahendra Putra</p>
+@include media-breakpoint-up(sm) {
+  html {
+    font-size: 1.2rem;
+  }
+}
 
-  <h5>Student ID: </h5>
-  <p>2106750654</p>
+@include media-breakpoint-up(md) {
+  html {
+    font-size: 1.4rem;
+  }
+}
 
-  <h3>Selamat datang {{user}}</h3>
+@include media-breakpoint-up(lg) {
+  html {
+    font-size: 1.6rem;
+  }
+}
+  h1 {
+    text-align: center;
+  }
+  .d-inline p-2 bg-primary text-white{
+    text-align: center;
+  }
 
-  <div class="mx-auto">
-    <br>
-    <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          <th>Date</th>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Status Penyelesaian</th>
-          <th>Selesai</th>
-          <th>Belum Selesai</th>
-          <th>Hapus</th>
-        </tr>
-        {% comment %} Add the data below this line {% endcomment %}
-        {% for item in data %}
-        <tr>
-          <th>{{item.date}}</th>
-          <th>{{item.title}}</th>
-          <th>{{item.description}}</th>
-          <th>{{item.is_finished}}</th>
-          <th>
-            <form method="POST">
-                {% csrf_token %}
-                <a class="btn btn-primary" href="{% url 'todolist:finished' item.id %}" role="button">Selesai</a>
-            </form>
-          </th>
-          <th>
-            <form method="POST">
-            {% csrf_token %}
-            <a class="btn btn-primary" href="{% url 'todolist:not-finished' item.id %}" role="button">Belum Selesai</a>
-            </form>
-          </th>
-          <th>
-            <form method="POST">
-                {% csrf_token %}
-                <a class="btn btn-danger" href="{% url 'todolist:delete' item.id %}" role="button">Hapus</a>
-            </form>
-          </th>
-        </tr>
-        {% endfor %}
-      </thead>
-    </table>
+
+</style>
+ 
+ 
+  
+  <nav class="navbar navbar-dark bg-primary">
+    <div style = "padding: 10px;">
+      <a class="navbar-brand" href="#">Tugas 4 PBP</a>
+    </div>
+      <span class = "ms-auto mb-2 mb-lg-0">
+        <div style = "padding: 10px;">
+          <a class="btn btn-primary" href="{% url 'todolist:create-task' %}" role="button">Create Task</a>
+          <a class="btn btn-danger" href="{% url 'todolist:logout' %}" role="button">Logout</a>
+        </div>
+      </span>
+  
+  </nav>
+  
+  <h1 class="display-4">Selamat datang, {{user}}!</h1>
+
+  <br>
+  <br>
+  <div class = "container">
+    <div class = "row">
+      {% for item in data %}
+      <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+        <div class="card" style="width: 18rem;">
+          <h5 class="card-header">{{item.title}}</h5>
+          <div class="card-body">
+            <h5 class="card-title">{{item.description}}</h5>
+            <p class="card-text">{{item.date}}</p>
+            <p class="card-text">Status Penyelesaian: {{item.is_finished}}</p>
+            <a href="{% url 'todolist:finished' item.id %}" class="btn btn-primary">Selesai</a>
+            <a href="{% url 'todolist:not-finished' item.id %}" class="btn btn-primary">Belum Selesai</a>
+            <a href="{% url 'todolist:delete' item.id %}" class="btn btn-danger">Hapus</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
   </div>
+  
+  
   <br>
   <br>
-  <h5>Sesi terakhir login: {{ last_login }}</h5>
-  <p class="text-center">
-    <a class="btn btn-primary" href="{% url 'todolist:create-task' %}" role="button">Tambah Task</a>
-  </p>
-    
-  <p class="text-center">
-    <a class="btn btn-danger" href="{% url 'todolist:logout' %}" role="button">Logout</a>
-  </p>
+  <div class="d-inline p-2 bg-primary text-white">
+    Sesi terakhir login: {{ last_login }}
+  </div>
+
 {% endblock content %}
