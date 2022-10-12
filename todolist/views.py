@@ -2,6 +2,8 @@ import datetime
 
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.http import HttpResponse
+from django.core import serializers
 from django.shortcuts import redirect
 from django.shortcuts import render 
 from django.contrib.auth.forms import UserCreationForm
@@ -14,6 +16,13 @@ from django.contrib.auth.models import User
 from todolist.models import Task
 
 # Create your views here.
+@login_required(login_url='/todolist/login/')
+def show_json(request):
+    data = Task.objects.filter(user = request.COOKIES['user'])
+    return HttpResponse(serializers.serialize("json", data), content_type = 'application/json')
+    
+
+
 @login_required(login_url='/todolist/login/')
 def todolist(request):
     try:

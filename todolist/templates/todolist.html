@@ -44,7 +44,7 @@
 
 </style>
  
- 
+
   
   <nav class="navbar navbar-dark bg-primary">
     <div style = "padding: 10px;">
@@ -64,24 +64,81 @@
   <br>
   <br>
   <div class = "container">
-    <div class = "row">
-      {% for item in data %}
-      <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-        <div class="card" style="width: 18rem;">
-          <h5 class="card-header">{{item.title}}</h5>
-          <div class="card-body">
-            <h5 class="card-title">{{item.description}}</h5>
+    <div class = "row" id = "task_obj">
+      <!-- {% for item in data %} -->
+      <!-- <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+        <div class="card" style="width: 18rem;" id = "task_obj"> -->
+          <!-- <h5 class="card-header">{{item.title}}</h5>
+          <div class="card-body"> -->
+            <!-- <h5 class="card-title">{{item.description}}</h5>
             <p class="card-text">{{item.date}}</p>
-            <p class="card-text">Status Penyelesaian: {{item.is_finished}}</p>
-            <a href="{% url 'todolist:finished' item.id %}" class="btn btn-primary">Selesai</a>
+            <p class="card-text">Status Penyelesaian: {{item.is_finished}}</p> -->
+            <!-- <a href="{% url 'todolist:finished' item.id %}" class="btn btn-primary">Selesai</a>
             <a href="{% url 'todolist:not-finished' item.id %}" class="btn btn-primary">Belum Selesai</a>
-            <a href="{% url 'todolist:delete' item.id %}" class="btn btn-danger">Hapus</a>
+            <a href="{% url 'todolist:delete' item.id %}" class="btn btn-danger">Hapus</a> 
           </div>
         </div>
-      </div>
-      {% endfor %}
+      </div> -->
+      <!-- {% endfor %} -->
     </div>
   </div>
+<script>
+  async function getTask() {
+    return fetch("{% url 'todolist:show_json' %}").then((res) => res.json())
+  }
+
+  async function refreshTask() {
+    console.log("halo")
+    document.getElementById("task_obj").innerHTML = ""
+    const task = await getTask()
+    console.log(task)
+    let htmlString = ""
+    task.forEach((item) => {
+      
+      htmlString += ` 
+      <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+        <div class="card" style="width: 18rem;">
+          <h5 class="card-header">${item.fields.title}</h5>
+          <div class="card-body">
+              <h5 class="card-title">${item.fields.description}</h5>
+              <p class="card-text">${item.fields.date}</p>
+              <p class="card-text">Status Penyelesaian: ${Boolean(item.fields.is_finished)}</p>
+          </div>
+        </div>
+      </div>`
+    })
+    //console.log(item.fields.date)
+    console.log("halo")
+    document.getElementById("task_obj").innerHTML = htmlString
+  }
+  console.log("halo dunia")
+  refreshTask()
+  
+
+</script>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> 
   
   
   <br>
