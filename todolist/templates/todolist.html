@@ -43,16 +43,19 @@
 
 
 </style>
+
  
 
   
   <nav class="navbar navbar-dark bg-primary">
     <div style = "padding: 10px;">
-      <a class="navbar-brand" href="#">Tugas 4 PBP</a>
+      <a class="navbar-brand" href="#">Tugas 6 PBP</a>
     </div>
       <span class = "ms-auto mb-2 mb-lg-0">
         <div style = "padding: 10px;">
-          <a class="btn btn-primary" href="{% url 'todolist:create-task' %}" role="button">Create Task</a>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Create Task
+          </button>
           <a class="btn btn-danger" href="{% url 'todolist:logout' %}" role="button">Logout</a>
         </div>
       </span>
@@ -65,77 +68,38 @@
   <br>
   <div class = "container">
     <div class = "row" id = "task_obj">
-      <!-- {% for item in data %} -->
-      <!-- <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-        <div class="card" style="width: 18rem;" id = "task_obj"> -->
-          <!-- <h5 class="card-header">{{item.title}}</h5>
-          <div class="card-body"> -->
-            <!-- <h5 class="card-title">{{item.description}}</h5>
-            <p class="card-text">{{item.date}}</p>
-            <p class="card-text">Status Penyelesaian: {{item.is_finished}}</p> -->
-            <!-- <a href="{% url 'todolist:finished' item.id %}" class="btn btn-primary">Selesai</a>
-            <a href="{% url 'todolist:not-finished' item.id %}" class="btn btn-primary">Belum Selesai</a>
-            <a href="{% url 'todolist:delete' item.id %}" class="btn btn-danger">Hapus</a> 
-          </div>
-        </div>
-      </div> -->
-      <!-- {% endfor %} -->
+      
     </div>
   </div>
-<script>
-  async function getTask() {
-    return fetch("{% url 'todolist:show_json' %}").then((res) => res.json())
-  }
 
-  async function refreshTask() {
-    console.log("halo")
-    document.getElementById("task_obj").innerHTML = ""
-    const task = await getTask()
-    console.log(task)
-    let htmlString = ""
-    task.forEach((item) => {
-      
-      htmlString += ` 
-      <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-        <div class="card" style="width: 18rem;">
-          <h5 class="card-header">${item.fields.title}</h5>
-          <div class="card-body">
-              <h5 class="card-title">${item.fields.description}</h5>
-              <p class="card-text">${item.fields.date}</p>
-              <p class="card-text">Status Penyelesaian: ${Boolean(item.fields.is_finished)}</p>
-          </div>
-        </div>
-      </div>`
-    })
-    //console.log(item.fields.date)
-    console.log("halo")
-    document.getElementById("task_obj").innerHTML = htmlString
-  }
-  console.log("halo dunia")
-  refreshTask()
-  
 
-</script>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Create Task</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <form id = "form" onsubmit="return false;">
       <div class="modal-body">
-        ...
+          {% csrf_token %}
+          <div class="form-outline form-white mb-4">
+              <input type="text" name="title" placeholder="Title" class="form-control">
+              <label>Title</label>
+          </div>
+
+          <div class="form-outline form-white mb-4">
+              <input type="text" name="description" placeholder="Description" class="form-control">
+              <label>Description</label>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button id = "button" type="button" class="btn btn-primary">Add task</button>
+          </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+      </form>
     </div>
   </div>
 </div> 
@@ -146,5 +110,94 @@
   <div class="d-inline p-2 bg-primary text-white">
     Sesi terakhir login: {{ last_login }}
   </div>
+
+<script>
+  const url = "{% url 'todolist:todolist' %}"
+  async function getTask() {
+    return fetch("{% url 'todolist:show_json' %}").then((res) => res.json())
+  }
+
+  function getCookie(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== "") {
+        const cookies = document.cookie.split(";");
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          // Does this cookie string begin with the name we want?
+          if (cookie.substring(0, name.length + 1) === name + "=") {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+      }
+      return cookieValue;
+  }
+
+  async function refreshTask() {
+    document.getElementById("task_obj").innerHTML = ""
+    const task = await getTask()
+    let htmlString = ""
+    task.forEach((item) => {
+      
+      htmlString += ` 
+      <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+        <div class="card" style="width: 18rem;">
+          <h5 class="card-header">${item.fields.title}</h5>
+          <div class="card-body">
+              
+              <h5 class="card-title">${item.fields.description}</h5>
+              <p class="card-text">${item.fields.date}</p>
+              <p class="card-text">Status Penyelesaian: ${Boolean(item.fields.is_finished)}</p>
+              <button type="button" class="btn btn-success" id ="buttonFinished" onclick = "changeFinished(${item.pk})">Selesai</button> 
+              <button type="button" class="btn btn-success" onclick = "changeNotFinished(${item.pk})">Belum Selesai</a>
+              <button type="button" class="btn btn-danger" id ="buttonDelete" onclick = "deleteTask(${item.pk})">Hapus</button>
+              
+          </div>
+        </div>
+      </div>`
+    })
+    document.getElementById("task_obj").innerHTML = htmlString
+  }
+
+  function addTask() {
+   
+    fetch("{% url 'todolist:add_task_item' %}", {
+      method: "POST",
+      body: new FormData(document.querySelector('#form'))
+    }).then(refreshTask)
+    return false
+  }
+
+  async function deleteTask(id) {
+    
+    fetch(`${url}delete/${id}`, {
+      method: 'DELETE',
+      headers: {
+      "Content-type": "application/json",
+      "X-CSRFToken": getCookie("csrftoken"),
+      }
+    }).then(refreshTask)
+  }
+
+  async function changeFinished(id) {
+    fetch(`${url}${id}/selesai`, {
+      
+    }).then(refreshTask)
+  }
+
+  async function changeNotFinished(id) {
+    console.log(`${url}${id}/belum-selesai`)
+    fetch(`${url}${id}/belum-selesai`, {
+      
+    }).then(refreshTask)
+  }
+  document.getElementById("button").onclick = addTask
+  
+  refreshTask()
+  
+
+</script>
+
+
 
 {% endblock content %}

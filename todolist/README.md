@@ -140,9 +140,9 @@ Silahkan mengunjungi: https://initugaspbp.herokuapp.com/todolist
             * ::placeholder untuk memilih teks placeholder pada elemen input teks;
 * Cara saya mengimplementasikan checklist saya menambahkan bootstrap terlebih dahulu di base.html dengan
     ``` <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">```
-  Saya menambahkan css pada halaman login, register, dan create-task sesuai dengan yang saya inginkan. Saya mencari template di google yang sudah responsive 
-  Saya menambahkan kode CSS pada halaman todolist dengan membuat navbar yang berisi tugas, tombol create task, dan tombol logout
-  Lalu, saya menambahkan kode CSS pada halaman todolist dengan membuat card yang diisi dengan object todolist
+  Saya menambahkan css pada halaman login, register, dan create-task sesuai dengan yang saya inginkan. Saya mencari template di google yang sudah responsive.
+  Saya menambahkan kode CSS pada halaman todolist dengan membuat navbar yang berisi tugas, tombol create task, dan tombol logout.
+  Lalu, saya menambahkan kode CSS pada halaman todolist dengan membuat card yang diisi dengan object todolist.
     
 
 

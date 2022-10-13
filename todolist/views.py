@@ -2,7 +2,7 @@ import datetime
 
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 from django.core import serializers
 from django.shortcuts import redirect
 from django.shortcuts import render 
@@ -99,13 +99,35 @@ def is_finished(request,id):
     task = Task.objects.get(pk=id)
     task.is_finished = True
     task.save()
-    response = HttpResponseRedirect(reverse("todolist:todolist"))
-    return response
+    return HttpResponse(b"CREATED", status=201)
+    #return response
 
 def is_not_finished(request, id):
-    task = Task.objects.get(pk=id)
-    task.is_finished = False
-    task.save()
-    response = HttpResponseRedirect(reverse("todolist:todolist"))
-    return response
+    try:
+        task = Task.objects.get(pk=id)
+        task.is_finished = False
+        task.save()
+        return HttpResponse(b"CREATED", status=201)
+    except:
+        return HttpResponseNotFound()
+    #return response
+
+def add_task_item(request):
+    if request.method == 'POST':
+        user_id = request.user
+        date = datetime.datetime.now()
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+
+        Task.objects.create(user = user_id, date = date, title = title, description = description)
+        return HttpResponse(b"CREATED", status=201)
+    return HttpResponseNotFound()
+
+def delete_item(request, id):
+    if request.method == 'DELETE':
+        task = Task.objects.get(pk=id)
+        task.delete()
+        return HttpResponse(b"CREATED", status=201)
+    return HttpResponseNotFound()
+
     
