@@ -32,6 +32,11 @@
   ```
   Intinya jika button ```Add task``` dengan id = "button" di click maka fungsi addTask akan dijalankan
 
+* 1. Browser membuat JavaScript call yang kemudian akan mengaktifkan XMLHttpRequest.
+  2. Di background, web browser mengirimkan permintaan (request) HTTP ke server.
+  3. Server menerima, mengambil, dan mengirimkan data kembali ke web browser.
+  4. Web browser menerima data yang diminta dan akan langsung ditampilkan di halaman tanpa harus melalui proses reload terlebih dulu.
+
 * Cara saya mengimplementasikan checklist di atas adalah pada bagian AJAX GET saya membuat view baru, yaitu show_json yang mengembalikan data dalam bentuk JSON <br>
   lalu menambahkan url path ```/todolist/json``` yang menjalankan fungsi show_json dan nantinya akan menampilkan data dalam bentuk JSON. Pada pengambilan task, <br>
   todolist.html ditambahkan bagian script, lalu saya membuat fungsi refreshTask. Pada fungsi refreshTask pertama kita fetch data dari /todolist/json dengan bantuan <br>
